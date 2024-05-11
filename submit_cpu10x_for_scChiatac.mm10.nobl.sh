@@ -16,16 +16,16 @@ addLinkerSeq='-A ACGTGATATTTCACGACTCT' #add linker sequence for cpu stag '-A ACG
 #addLinkerSeq='' #This is for default linker used in bridge linker ChIA-PET
 
 export genome=mm10
-export ARCref=/data/home/ruanlab/huangxingyu/Tools/cellranger-arc-2.0.2/genome/refdata-cellranger-arc-mm10-2020-A-2.0.0 #genome ref
-export GEXref=/data/home/ruanlab/huangxingyu/Tools/cellranger-7.1.0/genome/refdata-gex-mm10-2020-A #genome ref
-fasta="/data/home/ruanlab/huangxingyu/Haoxi20230315/20230205_pipeline/refs/mm10/bwa/mm10.fa"
+export ARCref=~/Tools/cellranger-arc-2.0.2/genome/refdata-cellranger-arc-mm10-2020-A-2.0.0 #genome ref
+export GEXref=~/Tools/cellranger-7.1.0/genome/refdata-gex-mm10-2020-A #genome ref
+fasta="~/Haoxi20230315/20230205_pipeline/refs/mm10/bwa/mm10.fa"
 
 export gmac='mm' #MACS2: hs=human, mm=mouse, dm=fruitfly
 export shiftsize=-75 #MACS2
 export macsq=0.001 #MACS2
 export peakext=150 #MACS2
 
-export blacklist=/data/home/ruanlab/huangxingyu/Haoxi20230315/20230205_pipeline/pipelineTools/mm10.blacklist.bed
+export blacklist=~/Haoxi20230315/20230205_pipeline/pipelineTools/mm10.blacklist.bed
 export minMapScore=30 #CPU mappping output filter
 export mapq=20 # xyh
 export selfbp=1 #to report everythin in the tsv
@@ -57,20 +57,20 @@ export dumpfolder=dump_intermediate     #where intermediate files to be dumped
 maindir=$PWD
 
 #tools and refs
-export sifpath=/data/home/ruanlab/huangxingyu/Haoxi20230315/20230205_pipeline/singularity
+export sifpath=~/Haoxi20230315/20230205_pipeline/singularity
 export scom="singularity run $sifpath/cpu0.0.1a-r2.sumner.sif"
 export pigz="$scom pigz -f " # xyh
 export dedup="singularity run ${sifpath}/GATK_latest.sif gatk MarkDuplicates --BARCODE_TAG=ZB --REMOVE_DUPLICATES=true --ADD_PG_TAG_TO_READS=false" # xyh
-# export dedup="java -jar /data/home/ruanlab/huangxingyu/Tools/gatk-4.4.0.0/gatk-package-4.4.0.0-local.jar MarkDuplicates --BARCODE_TAG ZB --REMOVE_DUPLICATES true --ADD_PG_TAG_TO_READS false" # xyh
+# export dedup="java -jar ~/Tools/gatk-4.4.0.0/gatk-package-4.4.0.0-local.jar MarkDuplicates --BARCODE_TAG ZB --REMOVE_DUPLICATES true --ADD_PG_TAG_TO_READS false" # xyh
 
 module load R-3.6.1
 export Rbin=/share/apps/software/R/3.6.1/bin
-export toolsbin=/data/home/ruanlab/huangxingyu/Tools/forscChIATACSeq
+export toolsbin=~/Tools/forscChIATACSeq
 export bedcmd=$toolsbin/bedtools
 export samcmd=$toolsbin/samtools
 export Rcmd=$Rbin/Rscript
 
-export tmppath=/data/home/ruanlab/huangxingyu/Haoxi20230315/20230205_pipeline/codes
+export tmppath=~/Haoxi20230315/20230205_pipeline/codes
 export statpy_noTag=${tmppath}/statBarcode_givenCBlist.py #input have to be no header sam format
 export addCBpy=${tmppath}/addCBZB_givenCBlist.py
 export injectCBreadID=${tmppath}/useCBtag_injectReadID.pl
