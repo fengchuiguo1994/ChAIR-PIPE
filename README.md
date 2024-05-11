@@ -28,6 +28,7 @@ CtG
 
 Python
 R
+Perl
 ```
 Some of the software we use is the singularity version. The following four software can be downloaded from Baidu.com (https://pan.baidu.com/s/1KKC0DJ43wuuCdPwr09dgCg?pwd=bj2p   Password: bj2p)
 ```
@@ -41,6 +42,9 @@ cp cellranger_6.0.0.sif cpu0.0.1a-r2.sumner.sif GATK_latest.sif juicer_1.22.01.s
 ```
 
 # USAGE
-1. Download data from GSA ()
+1. Download data from CNCB (https://www.cncb.ac.cn/)
+2. Changing the file name to match cellranger's requirements
+3. 
 ```
+
 ```
