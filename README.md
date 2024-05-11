@@ -5,7 +5,7 @@ Program for ChAIR data analysis
 
 # REQUIREMENT
 ```
-ChIAPET-pipeline ()
+ChIAPET-pipeline (https://github.com/TheJacksonLaboratory/ChIA-PIPE)
 BEDTools
 SAMTools
 DeepTools
@@ -14,8 +14,6 @@ MACS2
 Cell-ranger
 Cell-ranger-atac
 Cell-ranger-arc
-CrossMap
-Pairix
 
 Downstream analysis:
 Seurat
@@ -31,7 +29,18 @@ CtG
 Python
 R
 ```
-python3 and python package
+Some of the software we use is the singularity version. The following four software can be downloaded from Baidu.com (https://pan.baidu.com/s/1KKC0DJ43wuuCdPwr09dgCg?pwd=bj2p   Password: bj2p)
+```
+cellranger_6.0.0.sif
+cpu0.0.1a-r2.sumner.sif
+GATK_latest.sif
+juicer_1.22.01.sif
+```
+```
+cp cellranger_6.0.0.sif cpu0.0.1a-r2.sumner.sif GATK_latest.sif juicer_1.22.01.sif singularity
 ```
 
+# USAGE
+1. Download data from GSA ()
+```
 ```
