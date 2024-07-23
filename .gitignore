@@ -1,0 +1,5 @@
+
+singularity/cellranger_6.0.0.sif
+singularity/cpu0.0.1a-r2.sumner.sif
+singularity/GATK_latest.sif
+singularity/juicer_1.22.01.sif
