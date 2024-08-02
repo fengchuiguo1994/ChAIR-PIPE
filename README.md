@@ -3,6 +3,66 @@ Program for ChAIR data analysis
 
 ![](img/pipeline.png)
 
+```mermaid
+graph TD;
+AA[scRNA] -- cellranger --> BB[scRNA matrix];
+CC[scDNA] -- cellranger-arc --> DD[readID-barcode map table];
+CC -- cpu stag --> CB[singlelinker.single fastq file];
+CC -- cpu stag --> CA[singlelinker.paired fastq file];
+CC -- cpu stag --> CD[none fastq file];
+CA -- cpu memaln --> EE[singlelinker.paired sam file];
+CB -- cpu memaln --> FF[singlelinker.single sam file];
+CD -- cpu memaln --> GG[none sam file];
+EE -- cpu pair --> EA[singlelinker.paired UU bam file]
+EE -- cpu pair --> EB[singlelinker.paired UxxU bam file]
+FF -- cpu pair --> FA[singlelinker.single UxxU bam file]
+GG -- cpu pair --> GA[none UU bam file]
+GG -- cpu pair --> GB[none UxxU bam file]
+EA -- bedtools/samtools --> EH[singlelinker.paired UU rmblacklist q? bam file]
+EB -- bedtools/samtools --> EI[singlelinker.paired UxxU rmblacklist q? bam file]
+FA -- bedtools/samtools --> FH[singlelinker.single UxxU rmblacklist q? bam file]
+GA -- bedtools/samtools --> GH[none UU rmblacklist q? bam file]
+GB -- bedtools/samtools --> GI[none UxxU rmblacklist q? bam file]
+
+EH --> AEH[singlelinker.paired UU rmblacklist q? barcode bam file]
+EI --> AEI[singlelinker.paired UxxU rmblacklist q? barcode bam file]
+FH --> AFH[singlelinker.single UxxU rmblacklist q? barcode bam file]
+GH --> AGH[none UU rmblacklist q? barcode bam file]
+GI --> AGI[none UxxU rmblacklist q? barcode bam file]
+DD --> AEH
+DD --> AEI
+DD --> AFH
+DD --> AGH
+DD --> AGI
+
+AEH -- picard --> HA[singlelinker.paired UU rmblacklist q? barcode dup bam file]
+AEI -- picard --> HB[singlelinker.paired UxxU rmblacklist q? barcode dup bam file]
+AFH -- picard --> HC[singlelinker.single UxxU rmblacklist q? barcode dup bam file]
+AGH -- picard --> HD[none UU rmblacklist q? barcode dup bam file]
+AGI -- picard --> HE[none UxxU rmblacklist q? barcode dup bam file]
+
+HD --> HF{distance > 1000}
+HF -- yes --> HG[none UU rmblacklist q? barcode dup gt1k bam file]
+HF -- no --> HH{fr?}
+HH -- yes --> HI[perfect ATAC signal]
+HH -- no --> HJ[others]
+
+HA --> KK[scPET bam]
+HG --> KK
+KK -- custom script --> LL[scPET matrix]
+
+HA --> II[scATAC bam]
+HB --> II
+HC --> II
+HG --> II
+HI --> II
+HE --> II
+
+II -- macs2 --> IIA[ATAC peak]
+II -- cellranger-atac --> JJ[scATAC matrix]
+IIA -- cellranger-atac --> JJ
+```
+
 # REQUIREMENT
 ```
 ChIAPET-pipeline (https://github.com/TheJacksonLaboratory/ChIA-PIPE)
