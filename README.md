@@ -6,21 +6,32 @@ Program for ChAIR data analysis
 # REQUIREMENT
 ```
 ChIAPET-pipeline (https://github.com/TheJacksonLaboratory/ChIA-PIPE)
-BEDTools
-SAMTools
-DeepTools
+MACS v2.2.7.1
+BEDTools v2.27.1
+SAMTools v1.9
+DeepTools v3.5.1
+Juicer tools 1.22.01 
+HiCRep Python version https://github.com/dejunlin/hicrep
+HiCExplorer v3.5
+hisat v2.1.0 
+htseq-count v0.13.5
+R 3.5.2
+Seurat 4.3.0
+Signac 1.10.0
+harmony 0.1.1
+DoubletFinder 2.0.3
+cellranger 6.0.0
+cellranger-arc 2.0.2
+cellranger-atac 2.1.0
+dip-c: https://github.com/tanlongzhi/dip-c
+Nucdynamic: https://github.com/tjs23/nuc_dynamics
+CrossMap v0.6.1
+monocle3 1.3.5
+bwa 0.7.17
+bcftools 1.17
+ucsc_kentUtils: https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/
+singularity 3.8.5-2.el7
 Picard
-MACS2
-Cell-ranger
-Cell-ranger-atac
-Cell-ranger-arc
-
-Downstream analysis:
-Seurat
-Signac
-DoubletFinder
-Harmony
-Monocle
 BandNorm
 Dip-c
 Nuc
