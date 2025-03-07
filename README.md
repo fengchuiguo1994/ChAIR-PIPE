@@ -122,5 +122,41 @@ cp cellranger_6.0.0.sif cpu0.0.1a-r2.sumner.sif GATK_latest.sif juicer_1.22.01.s
 4. bash submit_cpu10x_for_scChiatac.mm10.nobl.sh SCG0192_GT22-15872_SI-NA-D6.fastq.prefix > SCG0192_GT22-15872_SI-NA-D6.fastq.prefix.log 2>SCG0192_GT22-15872_SI-NA-D6.fastq.prefix.log.run.sh
 ```
 
+# EXAMPLE
+```
+step1-2:
+wget https://download.cncb.ac.cn/gsa-human/HRA007068/HRR1686121/HRR1686121.tar.gz # DNA
+wget https://download.cncb.ac.cn/gsa-human/HRA007068/HRR1686122/HRR1686122.tar.gz # RNA
+tar zxf HRR1686121.tar.gz 
+tar zxf HRR1686122.tar.gz
+
+mv K562_Rep1.DNA.R1_001.fastq.gz SCG0074-15872_SI-NA-D6_S5_L003_R1_001.fastq.gz
+mv K562_Rep1.DNA.R2_001.fastq.gz SCG0074-15872_SI-NA-D6_S5_L003_R2_001.fastq.gz
+mv K562_Rep1.DNA.R3_001.fastq.gz SCG0074-15872_SI-NA-D6_S5_L003_R3_001.fastq.gz
+mv K562_Rep1.RNA.R1_001.fastq.gz SCG0081-15878_GTAACATGCG-AGGTAACACT_S1_L001_R1_001.fastq.gz
+mv K562_Rep1.RNA.R2_001.fastq.gz SCG0081-15878_GTAACATGCG-AGGTAACACT_S1_L001_R2_001.fastq.gz
+
+step3:
+# https://www.10xgenomics.com/support/software/cell-ranger/downloads#reference-downloads
+wget https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2024-A.tar.gz
+tar zxf refdata-gex-GRCh38-2024-A.tar.gz
+
+# https://www.10xgenomics.com/support/software/cell-ranger-arc/downloads#reference-downloads
+wget https://cf.10xgenomics.com/supp/cell-arc/refdata-cellranger-arc-GRCh38-2024-A.tar.gz
+tar zxf refdata-cellranger-arc-GRCh38-2024-A.tar.gz
+
+step4:
+# change the parameter in submit_cpu10x_for_scChiatac.mm10.nobl.sh script：
+export genome=hg38 # hg38
+export ARCref=$abspath/refdata-cellranger-arc-GRCh38-2024-A # arc genome ref
+export GEXref=$abspath/refdata-gex-GRCh38-2024-A # gex genome ref
+fasta=hg38.fa # with hg38 bwa index
+
+# edit a input file: k562.SCG0074.fastq.prefix
+$abspath/SCG0074-15872_SI-NA-D6	$abspath/SCG0081-15878_GTAACATGCG-AGGTAACACT # No blank line breaks
+
+bash submit_cpu10x_for_scChiatac.mm10.nobl.sh k562.SCG0074.fastq.prefix > k562.SCG0074.fastq.prefix.log 2>k562.SCG0074.fastq.prefix.log.run.sh
+```
+
 # CONTACT
 黄星宇 (Xingyu Huang, xingyu.huang@zju.edu.cn/huang182@live.cn)
