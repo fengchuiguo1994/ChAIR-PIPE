@@ -103,7 +103,7 @@ Perl
 
 Slurm
 ```
-Some of the software we use is the singularity version. The following four software can be downloaded from Baidu.com (https://pan.baidu.com/s/1KKC0DJ43wuuCdPwr09dgCg?pwd=bj2p   Password: bj2p)
+Some of the software we use is the singularity version. The following four software can be downloaded from Baidu.com (https://pan.baidu.com/s/1KKC0DJ43wuuCdPwr09dgCg?pwd=bj2p   Password: bj2p) or scp public@43.143.40.13:~/*sif . (Password: public_123456)
 ```
 cellranger_6.0.0.sif
 cpu0.0.1a-r2.sumner.sif
